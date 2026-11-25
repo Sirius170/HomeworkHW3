@@ -20,12 +20,12 @@ public class Example1 {
         frame.add(button);
 
         // 設定按鈕點擊事件
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String name = textField.getText();
-                label.setText("Hello，" + name + "！");
-            }
+        // 使用 trim() 避免空白輸入
+        button.addActionListener((ActionEvent e) -> {
+            String name = textField.getText().trim();
+            label.setText("你好，" + name + "！");
         });
+
 
         // 設定關閉視窗事件
         frame.addWindowListener(new WindowAdapter() {
@@ -34,7 +34,12 @@ public class Example1 {
             }
         });
 
-        frame.setSize(350, 150);
+        // 使用 pack() 自動調整視窗大小
+        //frame.setSize(350, 150);
+        frame.pack();
+
+        // 讓視窗顯示在螢幕中央
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }

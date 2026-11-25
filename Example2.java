@@ -11,15 +11,19 @@ public class Example2 {
 
         // 輸入三個科目
         for (int i = 0; i < 3; i++) {
-            System.out.print("Enter the subject:");
+            //System.out.print("Enter the subject:");
+            System.out.print("Please enter subject " + (i + 1) + ": ");
             subjects.add(scanner.nextLine());
         }
 
         // 將資料寫入文字檔
         try (FileWriter writer = new FileWriter("subjects.txt")) {
 
+            // System.lineSeparator() 會依照作業系統使用適合的換行符號，
+            // 讓程式在 Windows、Linux 等不同系統上有較好的相容性
             for (String subject : subjects) {
-                writer.write(subject + "\n");
+                // writer.write(subject + "\n");
+                writer.write(subject + System.lineSeparator());
             }
 
             System.out.println("\nData has been successfully written to the file！");
